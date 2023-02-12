@@ -18,3 +18,7 @@
 
 - Inicialize o emaulador (Se necessário, execute o comando **_emaultor -list-avds_**, para saber quais AVDs estão configuradas).
 <pre>emulator @Emulator_Name</pre>
+
+#### Notas
+
+- A automação usa **_Appium Java_** com **_JUnit_** como framework de teste unitário e **_Maven_**.
