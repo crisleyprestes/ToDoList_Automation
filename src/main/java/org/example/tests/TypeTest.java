@@ -2,6 +2,7 @@ package org.example.tests;
 
 import org.example.core.BaseTest;
 import org.example.pages.TypesPage;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class TypeTest extends BaseTest {
@@ -13,5 +14,7 @@ public class TypeTest extends BaseTest {
         typesPage.clickCreateTypeButton();
         typesPage.setTaskType("FPF");
         typesPage.clickCreateButton();
+        typesPage.scroll("FPF");
+        Assert.assertTrue(typesPage.isTaskTypeCreated("FPF"));
     }
 }
