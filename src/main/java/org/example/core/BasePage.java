@@ -1,50 +1,61 @@
 package org.example.core;
 
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.TouchAction;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.android.AndroidKeyCode;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.example.core.DriverFactory.getDriver;
 
 public class BasePage {
 
-    public void clickButton(By by){
-        waitElement(by);
+    public void accessAppsList(){
+        getDriver().findElement(MobileBy.AccessibilityId("Apps")).click();
+    }
+
+    public void accessApp(String appName){
+        clickHomePhone();
+        accessAppsList();
+        scroll(appName);
+        clickByText(appName);
+    }
+
+    public void click(By by){
+        waitClickableElement(by);
         getDriver().findElement(by).click();
     }
 
-    public List<MobileElement> getList(By by){
-        List<MobileElement> list = getDriver().findElements(by);
-        return list;
+    public void clickByText(String text){
+        click(By.xpath("//*[@text='"+text+"']"));
     }
 
-    public String getText(By by){
-        return getDriver().findElement(by).getText();
+    public void clickHomePhone(){
+        getDriver().pressKeyCode(AndroidKeyCode.HOME);
     }
 
     public void implicitlyWait(long time){
         getDriver().manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
     }
 
-    public void scroll(String visibleText){
+    public boolean scroll(String visibleText){
         getDriver().findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)" +
                 ".instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))");
+        return true;
     }
 
     public void setField(By by, String text){
-        waitElement(by);
+        waitPresenceElement(by);
         getDriver().findElement(by).sendKeys(text);
     }
 
-    public boolean waitElement(By by){
+    public void waitClickableElement(By by){
+        new WebDriverWait(getDriver(), SleepTime.TEN_SEC).until(ExpectedConditions.elementToBeClickable(by));
+    }
+
+    public void waitPresenceElement(By by){
         new WebDriverWait(getDriver(), SleepTime.TEN_SEC).until(ExpectedConditions.presenceOfElementLocated(by));
-        return true;
     }
 }

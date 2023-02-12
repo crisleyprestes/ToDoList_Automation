@@ -38,7 +38,7 @@ public class DriverFactory {
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(SleepTime.TEN_SEC, TimeUnit.SECONDS);
     }
 
     public static void killDriver(){
