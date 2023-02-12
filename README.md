@@ -16,7 +16,7 @@
 - Clone o reposiório:
 <pre>git clone https://github.com/crisleyprestes/ToDoList_Automation.git</pre>
 
-- Inicialize o emaulador (Se necessário, execute o comando **_emaultor -list-avds_**, para saber quais AVDs estão configuradas).
+- Inicialize o emaulador para executar os testes (Se necessário, execute o comando **_emaultor -list-avds_**, para saber quais AVDs estão configuradas).
 <pre>emulator @Emulator_Name</pre>
 
 #### Notas
