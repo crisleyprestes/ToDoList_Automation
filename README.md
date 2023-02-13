@@ -9,7 +9,7 @@
 - Tenha as variáveis de ambiente do **_Java_** e do **_Android_** configuradas no path local.
 - Tenha instalado o **_Appium Desktop_** na versão **_1.3.2_**, ele pode ser baixado nesse link: https://github.com/appium/appium-desktop/releases/tag/v1.3.2.
 - Inicialize o **_Appium Server_**.
-- Tenha um emulador AVD configurado localmente.
+- Tenha um emulador AVD **_Nexus 5_** com **_Android 7**_ configurado localmente.
 
 #### Execução
 
